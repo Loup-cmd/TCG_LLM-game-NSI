@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titre %}{% endblock %} - LLM Cards</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+  <a class="logo" href="{{ url_for('accueil') }}">LLM Cards</a>
+  <nav>
+    <a href="{{ url_for('cartes') }}">Catalogue</a>
+    <a href="{{ url_for('regles') }}">Règles</a>
+    <a href="{{ url_for('classement') }}">Classement</a>
+    <a href="{{ url_for('combats') }}">Historique</a>
+    {% if joueur %}
+      <a href="{{ url_for('inventaire') }}">Inventaire</a>
+      <a href="{{ url_for('booster') }}">Booster</a>
+      <a href="{{ url_for('combat') }}">Combat</a>
+      {% if joueur.est_admin == 1 %}<a href="{{ url_for('admin_carte') }}">Ajouter une carte</a>{% endif %}
+      <a href="{{ url_for('profil') }}">{{ joueur.pseudo }} ({{ joueur.pieces }} pièces)</a>
+      <a href="{{ url_for('deconnexion') }}">Déconnexion</a>
+    {% else %}
+      <a href="{{ url_for('connexion') }}">Connexion</a>
+      <a href="{{ url_for('inscription') }}">Inscription</a>
+    {% endif %}
+  </nav>
+</header>
+<main>
+{% block contenu %}{% endblock %}
+</main>
+<footer>
+  Illustrations des cartes générées par IA (Claude), à partir des caractéristiques de chaque modèle : technique hors
+  programme de NSI (voir docs/UTILISATION_IA.md). Aucune ne reprend de logo.
+  Benchmarks : indice d'intelligence et vitesse relevés au 2 novembre 2026.
+</footer>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block titre %}Inscription{% endblock %}
+{% block contenu %}
+<h1>Créer un compte</h1>
+<form method="post" class="panneau">
+  {% if erreur %}<p class="erreur">{{ erreur }}</p>{% endif %}
+  <label for="pseudo">Pseudo (3 à 20 lettres ou chiffres)</label>
+  <input id="pseudo" name="pseudo" required minlength="3" maxlength="20">
+  <label for="mdp">Mot de passe (8 caractères minimum)</label>
+  <input id="mdp" name="mdp" type="password" required minlength="8">
+  <label for="mdp2">Confirmer le mot de passe</label>
+  <input id="mdp2" name="mdp2" type="password" required minlength="8">
+  <button type="submit">Créer mon compte</button>
+</form>
+{% endblock %}

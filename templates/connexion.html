@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block titre %}Connexion{% endblock %}
+{% block contenu %}
+<h1>Connexion</h1>
+<form method="post" class="panneau">
+  {% if erreur %}<p class="erreur">{{ erreur }}</p>{% endif %}
+  <label for="pseudo">Pseudo</label>
+  <input id="pseudo" name="pseudo" required>
+  <label for="mdp">Mot de passe</label>
+  <input id="mdp" name="mdp" type="password" required>
+  <button type="submit">Se connecter</button>
+</form>
+{% endblock %}

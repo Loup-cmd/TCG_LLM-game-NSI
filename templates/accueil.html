@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block titre %}Accueil{% endblock %}
+{% block contenu %}
+<h1>Collectionne les modèles de langage</h1>
+<p>Chaque carte est un vrai LLM, noté d'après ses résultats aux benchmarks récents : sa <strong>puissance</strong> (indice d'intelligence)
+   et sa <strong>vitesse</strong> (jetons par seconde). Une carte rare est un des meilleurs modèles de sa catégorie.
+   Ouvre des boosters, complète ta collection et défie les autres joueurs.</p>
+<div class="chiffres">
+  <div><strong>{{ stats.nb_cartes }}</strong>modèles au catalogue</div>
+  <div><strong>{{ stats.nb_joueurs }}</strong>joueurs inscrits</div>
+  <div><strong>{{ stats.nb_combats }}</strong>combats joués</div>
+</div>
+{% if joueur %}
+  <p><a href="{{ url_for('booster') }}">Ouvrir un booster</a> ou <a href="{{ url_for('combat') }}">défier un joueur</a>.</p>
+{% else %}
+  <p><a href="{{ url_for('inscription') }}">Crée ton compte</a> : tu reçois 100 pièces et une première carte.
+     Pas sûr de comprendre une carte ? Lis les <a href="{{ url_for('regles') }}">règles</a>.</p>
+{% endif %}
+{% endblock %}

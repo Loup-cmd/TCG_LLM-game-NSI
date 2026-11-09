@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block titre %}Catalogue{% endblock %}
+{% block contenu %}
+{# [IA] hors programme : |length donne le nombre d'éléments ; le else d'une boucle for s'exécute quand la liste est vide. #}
+<h1>Catalogue des modèles</h1>
+<p class="petit">Trois catégories : <strong>Frontier</strong> (les modèles propriétaires les plus puissants),
+   <strong>Poids ouverts</strong> (modèles dont les poids sont publiés) et <strong>Compact</strong> (modèles légers et rapides).
+   La rareté se mesure <em>dans la catégorie</em>. <a href="{{ url_for('regles') }}">Comment lire une carte ?</a></p>
+<form method="get" class="filtres">
+  <div>
+    <label for="rarete">Rareté</label>
+    <select id="rarete" name="rarete">
+      <option value="">Toutes</option>
+      {% for r in raretes %}
+      <option value="{{ r.id_rarete }}" {% if r.id_rarete == rarete_choisie %}selected{% endif %}>{{ r.nom }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div>
+    <label for="categorie">Catégorie</label>
+    <select id="categorie" name="categorie">
+      <option value="">Toutes</option>
+      {% for cat in categories %}
+      <option value="{{ cat.id_categorie }}" {% if cat.id_categorie == categorie_choisie %}selected{% endif %}>{{ cat.nom }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <button type="submit">Filtrer</button>
+</form>
+
+<p>{{ cartes|length }} carte(s) affichée(s)</p>
+<div class="defile">
+<table>
+  <thead><tr><th>Illustration (IA)</th><th>Modèle</th><th>Catégorie</th><th>Rareté</th><th class="nombre">Puissance</th><th class="nombre">Vitesse</th><th class="nombre">Indice</th><th class="nombre">Jetons/s</th><th>Description</th></tr></thead>
+  <tbody>
+  {% for c in cartes %}
+    <tr>
+      <td><img class="vignette" src="{{ url_for('static', filename='cartes/' + c.illustration) }}" alt="Illustration générée par IA : {{ c.nom }}" width="120" height="80"></td>
+      <td><strong>{{ c.nom }}</strong><br><span class="petit">{{ c.editeur }}</span></td>
+      <td>{{ c.categorie }}</td>
+      <td class="rarete" style="color: {{ c.couleur }}">{{ c.rarete }}</td>
+      <td class="nombre">{{ c.puissance }} / 10</td>
+      <td class="nombre">{{ c.vitesse }} / 10</td>
+      <td class="nombre">{{ c.indice }}</td>
+      <td class="nombre">{{ c.tokens_s }}</td>
+      <td>{{ c.description }}</td>
+    </tr>
+  {% else %}
+    <tr><td colspan="9">Aucune carte ne correspond à ces filtres.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

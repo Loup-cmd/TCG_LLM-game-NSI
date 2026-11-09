@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block titre %}Règles{% endblock %}
+{% block contenu %}
+<h1>Règles du jeu</h1>
+
+<h2>Une carte = un vrai modèle de langage</h2>
+<p>Les 24 cartes sont de vrais LLM. Leurs caractéristiques viennent de deux mesures publiées (relevé du 2 novembre 2026) :
+   l'<strong>indice d'intelligence</strong> d'Artificial Analysis (puissance générale, composite de tests de raisonnement,
+   de code, de sciences et de connaissances) et la <strong>vitesse de génération</strong> en jetons par seconde.</p>
+<ul>
+  <li><strong>Puissance</strong> (0 à 10) = indice d'intelligence / {{ indice_par_point }}, arrondi, plafonné à 10.</li>
+  <li><strong>Vitesse</strong> (0 à 10) = jetons par seconde / {{ tokens_par_point }}, arrondi, plafonné à 10.</li>
+  <li><strong>Score global</strong> = {{ coef_puissance }} x puissance + {{ coef_vitesse }} x vitesse (sur 100) : la puissance compte, mais pas sans la vitesse.</li>
+</ul>
+
+<h2>Catégories et raretés</h2>
+<p>Les modèles sont répartis en trois catégories : <strong>Frontier</strong>, <strong>Poids ouverts</strong> et <strong>Compact</strong>.
+   Dans chaque catégorie, on classe les 8 modèles par score global, et la rareté dépend du rang :</p>
+<table>
+  <thead><tr><th>Rang dans la catégorie</th><th>Rareté</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td class="rarete" style="color: #c77700">Légendaire</td></tr>
+    <tr><td>2 et 3</td><td class="rarete" style="color: #8a3ffc">Épique</td></tr>
+    <tr><td>4 et 5</td><td class="rarete" style="color: #1d6fd8">Rare</td></tr>
+    <tr><td>6 à 8</td><td class="rarete" style="color: #6b7280">Commune</td></tr>
+  </tbody>
+</table>
+<p>Une carte rare est donc un <em>bon modèle dans sa catégorie</em>, pas forcément le plus puissant de tout le catalogue :
+   le Légendaire des modèles Compact est moins puissant qu'un Frontier Commun, mais bien plus rapide.</p>
+
+<h2>Booster et pièces</h2>
+<p>Tu reçois 100 pièces et la carte {{ carte_depart }} à l'inscription. Un booster coûte {{ prix }} pièces et contient
+   {{ nb_cartes_booster }} cartes. Chances de tirage : Commune 60 %, Rare 25 %, Épique 12 %, Légendaire 3 %.</p>
+
+<h2>Combat</h2>
+<p>Tu choisis un adversaire et l'une de tes cartes ; l'adversaire défend avec une de ses cartes tirée au hasard.
+   Chaque carte inflige <strong>puissance x ({{ base_esquive }} - vitesse de la carte adverse)</strong> dégâts :
+   plus l'adversaire est rapide, plus il est difficile à toucher. La carte qui inflige le plus de dégâts gagne.
+   Victoire : +{{ victoire }} pièces ; égalité : +{{ egalite }} pièces pour chacun.</p>
+
+<h2>Illustrations</h2>
+<p>Les images sont générées par une IA à partir des caractéristiques de chaque carte (couleur du fond = catégorie, cadre
+   et étoiles = rareté, nombre de neurones = puissance, traits de vitesse = vitesse). Elles ne reprennent aucun logo.</p>
+{% endblock %}

@@ -1,0 +1,25 @@
+nom;editeur;categorie;indice;tokens_s;description
+Gemini 4 Carbon;Google;Frontier;59.4;95;Tête de l'indice d'intelligence au 2 novembre 2026 (sortie le 28/10/2026).
+Claude Opus 5.5;Anthropic;Frontier;58.4;96;À un point du premier du classement, pour une vitesse comparable (sortie le 22/09/2026).
+GPT-6 Astra;OpenAI;Frontier;56.9;72;Le modèle le plus puissant d'OpenAI dans ce relevé, mais plus lent (sortie le 03/09/2026).
+GPT-6.1 Sol;OpenAI;Frontier;54.5;87;Proche du sommet pour un coût d'évaluation bien plus faible (sortie le 29/09/2026).
+Claude Sonnet 5.5;Anthropic;Frontier;54.2;137;Très proche de la tête du classement et nettement plus rapide que les modèles du haut (sortie le 28/09/2026).
+Gemini 4 Argon;Google;Frontier;50.4;83;Deuxième modèle de la gamme Gemini 4 de ce relevé (sortie le 30/09/2026).
+Kimi K3.1 Pro;Moonshot AI;Frontier;46.0;31;Puissant mais lent : 31 jetons par seconde seulement (sortie le 23/10/2026).
+Muse Wonder;Meta;Frontier;43.3;192;Un modèle de haut niveau qui génère très vite (sortie le 12/10/2026).
+DeepSeek V4.1 Flash;DeepSeek;Poids ouverts;32.5;171;Le meilleur modèle à poids ouverts du classement (sortie le 17/10/2026).
+GLM-5.3;Z AI;Poids ouverts;31.6;89;Modèle à poids ouverts de Z AI (sortie le 18/08/2026).
+MiMo-V2.6-Pro;Xiaomi;Poids ouverts;29.9;44;Modèle à poids ouverts de Xiaomi, plutôt lent : 44 jetons par seconde.
+MiniMax-M3.1-Flash;MiniMax;Poids ouverts;28.9;136;Version Flash à poids ouverts, rapide (sortie le 19/10/2026).
+Step 5 Preview;StepFun;Poids ouverts;28.5;146;Aperçu à poids ouverts de StepFun, rapide : 146 jetons par seconde.
+Muse Spark Open;Meta;Poids ouverts;24.7;193;Modèle à poids ouverts de Meta, très rapide : 193 jetons par seconde.
+DeepSeek V4 Pro;DeepSeek;Poids ouverts;23.1;94;Version Pro à poids ouverts de DeepSeek (sortie le 13/08/2026).
+Qwen3.8 27B;Alibaba;Poids ouverts;20.1;41;Modèle à poids ouverts de 27 milliards de paramètres.
+Claude Haiku 5.5;Anthropic;Compact;36.2;235;Le modèle compact le plus puissant de la sélection, à 235 jetons par seconde.
+Gemini 3.8 Flash;Google;Compact;30.6;131;Version Flash de Google : un bon équilibre entre puissance et vitesse.
+GPT-6 Luna;OpenAI;Compact;27.8;117;Petit modèle d'OpenAI, très économique (0,10 $ le million de jetons en entrée).
+K2 Horizon 375B A23B;Institute of Foundation Models;Compact;17.8;720;Le modèle le plus rapide du classement : 720 jetons par seconde, mais peu puissant.
+Beam 1.0;Reflection;Compact;17.7;361;Modèle à poids ouverts très rapide : 361 jetons par seconde.
+Gemini 3.5 Flash-Lite;Google;Compact;11.7;423;Version Flash-Lite de Google : 423 jetons par seconde.
+Nemotron 3.5 Lightning;NVIDIA;Compact;5.5;295;Modèle NVIDIA ultra-rapide (295 jetons par seconde) mais peu puissant.
+Mistral Small 4;Mistral;Compact;4.3;158;Petit modèle à poids ouverts de Mistral AI, éditeur français.

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block titre %}Inventaire{% endblock %}
+{% block contenu %}
+<h1>Mon inventaire</h1>
+<div class="chiffres">
+  <div><strong>{{ differentes }} / {{ taille_catalogue }}</strong>modèles différents</div>
+  <div><strong>{{ total }}</strong>exemplaires au total</div>
+  <div><strong>{{ joueur.pieces }}</strong>pièces</div>
+</div>
+<div class="defile">
+<table>
+  <thead><tr><th>Illustration (IA)</th><th>Modèle</th><th>Catégorie</th><th>Rareté</th><th class="nombre">Puissance</th><th class="nombre">Vitesse</th><th class="nombre">Quantité</th></tr></thead>
+  <tbody>
+  {% for c in cartes %}
+    <tr>
+      <td><img class="vignette" src="{{ url_for('static', filename='cartes/' + c.illustration) }}" alt="Illustration générée par IA : {{ c.nom }}" width="120" height="80"></td>
+      <td><strong>{{ c.nom }}</strong><br><span class="petit">{{ c.editeur }}</span></td>
+      <td>{{ c.categorie }}</td>
+      <td class="rarete" style="color: {{ c.couleur }}">{{ c.rarete }}</td>
+      <td class="nombre">{{ c.puissance }} / 10</td>
+      <td class="nombre">{{ c.vitesse }} / 10</td>
+      <td class="nombre">{{ c.quantite }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+<p><a href="{{ url_for('booster') }}">Ouvrir un booster</a> pour agrandir ta collection.</p>
+{% endblock %}

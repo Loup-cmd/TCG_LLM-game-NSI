@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block titre %}Historique{% endblock %}
+{% block contenu %}
+{# [IA] hors programme : "is none" teste si la valeur est NULL (égalité) ; le else d'une boucle for s'exécute quand la liste est vide. #}
+<h1>Derniers combats</h1>
+<table>
+  <thead><tr><th>Date</th><th>Attaquant</th><th>Défenseur</th><th>Vainqueur</th></tr></thead>
+  <tbody>
+  {% for c in combats %}
+    <tr>
+      <td>{{ c.date_combat }}</td>
+      <td>{{ c.attaquant }} ({{ c.carte_att }})</td>
+      <td>{{ c.defenseur }} ({{ c.carte_def }})</td>
+      <td>
+        {% if c.id_vainqueur is none %}Égalité
+        {% elif c.id_vainqueur == c.id_attaquant %}{{ c.attaquant }}
+        {% else %}{{ c.defenseur }}{% endif %}
+      </td>
+    </tr>
+  {% else %}
+    <tr><td colspan="4">Aucun combat pour l'instant.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

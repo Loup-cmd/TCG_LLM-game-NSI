@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block titre %}Mon profil{% endblock %}
+{% block contenu %}
+<h1>Mon profil</h1>
+<p>Inscrit le {{ joueur.date_inscription }} - {{ joueur.pieces }} pièces.</p>
+{% if message %}<p class="succes">{{ message }}</p>{% endif %}
+{% if erreur %}<p class="erreur">{{ erreur }}</p>{% endif %}
+
+<form method="post" class="panneau">
+  <input type="hidden" name="action" value="pseudo">
+  <label for="pseudo">Nouveau pseudo</label>
+  <input id="pseudo" name="pseudo" value="{{ joueur.pseudo }}" required minlength="3" maxlength="20">
+  <button type="submit">Changer de pseudo</button>
+</form>
+
+<form method="post" class="panneau">
+  <input type="hidden" name="action" value="mdp">
+  <label for="ancien">Mot de passe actuel</label>
+  <input id="ancien" name="ancien" type="password" required>
+  <label for="nouveau">Nouveau mot de passe (8 caractères minimum)</label>
+  <input id="nouveau" name="nouveau" type="password" required minlength="8">
+  <button type="submit">Changer de mot de passe</button>
+</form>
+{% endblock %}

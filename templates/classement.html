@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block titre %}Classement{% endblock %}
+{% block contenu %}
+{# [IA] hors programme : loop.index est le numéro de l'itération de la boucle for (à partir de 1). #}
+<h1>Classement des joueurs</h1>
+<table>
+  <thead><tr><th class="nombre">Rang</th><th>Joueur</th><th class="nombre">Victoires</th><th class="nombre">Combats</th></tr></thead>
+  <tbody>
+  {% for l in lignes %}
+    <tr>
+      <td class="nombre">{{ loop.index }}</td>
+      <td>{{ l.pseudo }}</td>
+      <td class="nombre">{{ l.victoires }}</td>
+      <td class="nombre">{{ l.combats }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

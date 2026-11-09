@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block titre %}Combat{% endblock %}
+{% block contenu %}
+<h1>Défier un joueur</h1>
+{% if erreur %}<p class="erreur">{{ erreur }}</p>{% endif %}
+
+{% if resultat %}
+<div class="duel">
+  <div class="carte">
+    <img src="{{ url_for('static', filename='cartes/' + resultat.carte_att.illustration) }}" alt="Illustration générée par IA : {{ resultat.carte_att.nom }}" width="240" height="160">
+    <h3>{{ resultat.carte_att.nom }}</h3>
+    <div class="petit">{{ resultat.pseudo_att }} (attaquant)</div>
+    <div>Puissance {{ resultat.carte_att.puissance }} / Vitesse {{ resultat.carte_att.vitesse }}</div>
+  </div>
+  <div class="contre">contre</div>
+  <div class="carte">
+    <img src="{{ url_for('static', filename='cartes/' + resultat.carte_def.illustration) }}" alt="Illustration générée par IA : {{ resultat.carte_def.nom }}" width="240" height="160">
+    <h3>{{ resultat.carte_def.nom }}</h3>
+    <div class="petit">{{ resultat.pseudo_def }} (défenseur)</div>
+    <div>Puissance {{ resultat.carte_def.puissance }} / Vitesse {{ resultat.carte_def.vitesse }}</div>
+  </div>
+</div>
+<div class="panneau">
+  {% if resultat.pseudo_vainqueur %}
+    <p class="succes">Victoire de {{ resultat.pseudo_vainqueur }} : +{{ resultat.recompense }} pièces.</p>
+  {% else %}
+    <p class="succes">Égalité : +{{ resultat.recompense }} pièces pour chacun.</p>
+  {% endif %}
+</div>
+{% endif %}
+
+<form method="post" class="panneau">
+  <p>Choisis un adversaire et l'une de tes cartes. Ton adversaire défend avec une de ses cartes tirée au hasard.
+     Chaque carte inflige <em>puissance x (15 - vitesse adverse)</em> dégâts : celle qui en inflige le plus gagne.
+     <a href="{{ url_for('regles') }}">Détail des règles</a></p>
+  <label for="adversaire">Adversaire</label>
+  <select id="adversaire" name="adversaire" required>
+    <option value="">-- Choisir --</option>
+    {% for a in adversaires %}
+    <option value="{{ a.id_joueur }}">{{ a.pseudo }}</option>
+    {% endfor %}
+  </select>
+  <label for="carte">Ma carte</label>
+  <select id="carte" name="carte" required>
+    <option value="">-- Choisir --</option>
+    {% for c in mes_cartes %}
+    <option value="{{ c.id_carte }}">{{ c.nom }} (puissance {{ c.puissance }}, vitesse {{ c.vitesse }}) - {{ c.rarete }}</option>
+    {% endfor %}
+  </select>
+  <button type="submit">Lancer le combat</button>
+</form>
+{% endblock %}

@@ -1,0 +1,59 @@
+/* Thème "cahier de notes" : fond quadrillé, encre bleu nuit, couleurs de rareté en accent ( totalement copié d'un tuto mais voila)*/
+:root {
+  --encre: #17223b;
+  --papier: #f6f8fb;
+  --trait: #dbe2ee;
+  --accent: #2748b8;
+  --erreur: #b3261e;
+  --ok: #1b7a3d;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; color: var(--encre); background-color: var(--papier);
+  background-image: linear-gradient(var(--trait) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--trait) 1px, transparent 1px);
+  background-size: 28px 28px;
+  font: 16px/1.55 system-ui, "Segoe UI", sans-serif;
+}
+header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 1rem 2rem;
+         padding: .8rem 1.5rem; background: var(--encre); }
+header a { color: #e8edf8; text-decoration: none; }
+header a:hover, header a:focus-visible { text-decoration: underline; }
+.logo { font: 700 1.3rem Georgia, "Times New Roman", serif; }
+nav { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; }
+main { max-width: 62rem; margin: 1.5rem auto; padding: 0 1.2rem 3rem; }
+h1 { font: 700 2rem/1.2 Georgia, "Times New Roman", serif; margin: 0 0 1rem; }
+h2 { font: 700 1.25rem Georgia, "Times New Roman", serif; margin: 1.6rem 0 .6rem; }
+.panneau { background: #fff; border: 1px solid var(--encre); padding: 1rem 1.2rem; margin: 1rem 0; max-width: 34rem; }
+label { display: block; margin: .6rem 0 .2rem; font-weight: 600; }
+input, select, textarea { font: inherit; padding: .4rem .5rem; border: 1px solid var(--encre); background: #fff; width: 100%; max-width: 26rem; }
+button { font: inherit; font-weight: 600; margin-top: .9rem; padding: .5rem 1.1rem; color: #fff; background: var(--accent);
+         border: 0; cursor: pointer; }
+button:hover, button:focus-visible { background: var(--encre); }
+.filtres { display: flex; flex-wrap: wrap; gap: 0 1.2rem; align-items: end; }
+.filtres select { width: auto; }
+table { border-collapse: collapse; width: 100%; background: #fff; margin: .8rem 0; }
+th, td { border: 1px solid var(--trait); padding: .4rem .7rem; text-align: left; }
+th { background: var(--encre); color: #fff; font-weight: 600; }
+td.nombre, th.nombre { text-align: right; }
+.rarete { font-weight: 700; }
+.erreur { color: var(--erreur); font-weight: 600; }
+.succes { color: var(--ok); font-weight: 600; }
+.chiffres { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0; }
+.chiffres div { background: #fff; border: 1px solid var(--encre); padding: .6rem 1.2rem; }
+.chiffres strong { display: block; font: 700 1.8rem Georgia, serif; }
+.booster { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0; }
+.carte { background: #fff; border: 3px solid var(--trait); padding: .7rem 1rem; width: 12rem; }
+.carte h3 { margin: 0 0 .3rem; font: 700 1.1rem Georgia, serif; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* Illustrations des cartes (générées par IA) */
+.vignette { display: block; width: 120px; height: 80px; border-radius: 8px; }
+.defile { overflow-x: auto; }
+.defile table { min-width: 52rem; }
+.petit { font-size: .85rem; color: #4a5568; }
+.carte img { display: block; width: 100%; height: auto; border-radius: 8px; margin-bottom: .5rem; }
+.carte { width: 15rem; }
+.duel { display: flex; flex-wrap: wrap; gap: 1rem; align-items: stretch; margin: 1rem 0; }
+.duel .contre { align-self: center; font: 700 1.4rem Georgia, serif; }
+footer { max-width: 62rem; margin: 0 auto; padding: 1rem 1.2rem 2rem; font-size: .85rem; color: #3b4660; border-top: 1px solid var(--trait); }

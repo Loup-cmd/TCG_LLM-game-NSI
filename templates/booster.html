@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block titre %}Booster{% endblock %}
+{% block contenu %}
+<h1>Booster</h1>
+{% if erreur %}<p class="erreur">{{ erreur }}</p>{% endif %}
+{% if nouvelles_cartes %}
+  <p class="succes">Tu as obtenu {{ nouvelles_cartes|length }} cartes :</p>
+  <div class="booster">
+  {% for c in nouvelles_cartes %}
+    <div class="carte" style="border-color: {{ c.couleur }}">
+      <img src="{{ url_for('static', filename='cartes/' + c.illustration) }}" alt="Illustration générée par IA : {{ c.nom }}" width="240" height="160">
+      <h3>{{ c.nom }}</h3>
+      <div class="petit">{{ c.editeur }} - {{ c.categorie }}</div>
+      <div class="rarete" style="color: {{ c.couleur }}">{{ c.rarete }}</div>
+      <div>Puissance {{ c.puissance }} / Vitesse {{ c.vitesse }}</div>
+    </div>
+  {% endfor %}
+  </div>
+{% endif %}
+<form method="post" class="panneau">
+  <p>Un booster contient 3 cartes tirées au hasard. Prix : {{ prix }} pièces (tu en as {{ joueur.pieces }}).</p>
+  <button type="submit">Ouvrir un booster ({{ prix }} pièces)</button>
+</form>
+{% endblock %}
